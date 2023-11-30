@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: [
-        "react-bootstrap", // ignore react stuff
+        "react-bootstrap/Col", // ignore react stuff
       ],
     },
   }
