@@ -1,14 +1,7 @@
 import React, { useEffect } from "react";
 import { Chart } from "react-google-charts";
-import $ from 'jquery';
-
-function setChart() {
-   // document.getElementsByClassName("piechart")[0].setAttribute("id", "charto")
-   // $('#charto').find("div").attr("id", "charto")
-}
 
 export default function PieChart({ aciertos, errores }) {
-    useEffect(setChart, [])
 
     const data = [
         ["Resultado", "Cantidad"],
