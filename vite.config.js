@@ -7,7 +7,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: [
-        "react-bootstrap/Col", // ignore react stuff
+        "react-bootstrap/Col",
+        'react-bootstrap/Nav',
+        'react-bootstrap/Row',
+        'react-bootstrap/Tab'
       ],
     },
   }
