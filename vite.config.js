@@ -13,6 +13,6 @@ export default defineConfig({
         'react-bootstrap/Tab'
       ],
     },
-  }
-//  base: "/flashcard-app/"
+  },
+  base: "/flashcard-app/"
 })
