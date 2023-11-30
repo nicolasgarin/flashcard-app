@@ -1,0 +1,258 @@
+@import 'variables.scss';
+
+@font-face {
+    font-family: 'Dangrek';
+    src: local('Dangrek'),
+        url('./assets/fonts/Dangrek-Regular.ttf');
+}
+
+* {
+    font-family: Dangrek;
+}
+
+.body {
+    background-color: $celeste-dark;
+    margin: 0;
+    min-height: calc(100vh - $footerHeight - $headerHeight);
+    padding: 40px 0;
+}
+
+.header {
+    min-height: $headerHeight;
+    background-color: $azul-dark;
+    padding: 0 1.5rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    color: $celeste !important;
+
+    .enlace-logo {
+        text-decoration: none;
+    }
+
+    .logo {
+        font-size: 30px;
+        margin-bottom: 0;
+        color: $celeste-dark;
+    }
+
+    .botones {
+        gap: 15px;
+    }
+}
+
+.header-sub {
+    background-color: $azul;
+
+    .btn {
+        border: none;
+        &:hover {
+            background-color: $azul-dark !important;
+            color: $celeste !important;
+        }
+    }
+}
+
+.form-group {
+    display: flex;
+    margin: .5rem;
+}
+
+.form-group>label {
+    color: $celeste;
+    font-size: 1rem;
+    margin-right: .50rem;
+}
+
+.input {
+    background-color: $celeste;
+    border-radius: 8px;
+    height: 37.33px;
+
+    &.uno {
+        max-width: 250px;
+    }
+
+    &.dos {
+        max-width: 40px;
+    }
+}
+
+footer {
+    min-height: $footerHeight;
+    background-color: $azul-dark;
+    padding: 30px 0;
+
+    .texto-footer {
+        color: $celeste;
+        font-weight: 500;
+    }
+}
+
+.btn {
+    background-color: $celeste-dark !important;
+    color: $azul-dark !important;
+    padding: .5em 1em;
+    border-radius: .3em;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $azul !important;
+    }
+
+    &.btn-rojo {
+        background-color: $rojo !important;
+
+        &:hover {
+            background-color: $rojo-dark !important;
+        }
+    }
+}
+
+.initMessage {
+
+    h2,
+    p {
+        color: $azul-dark !important;
+    }
+
+    h2 {
+        margin-bottom: 50px;
+    }
+
+    p {
+        font-weight: 500;
+    }
+}
+
+.card {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: .25rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    color: $azul-dark !important;
+    background-color: $celeste !important;
+    transform-style: preserve-3d;
+    transition: 150ms;
+    cursor: pointer;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+
+    &:hover {
+        --translate-y: -2px;
+        box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+        cursor: auto;
+    }
+
+    &.flip {
+        --rotate-y: 180deg;
+    }
+
+    .front {
+        left: 0;
+    }
+
+    .back {
+        height: -webkit-fill-available;
+        width: -webkit-fill-available;
+        transform: rotateY(180deg);
+        border-radius: .25rem;
+
+        &.correct {
+            background-color: $verde;
+        }
+
+        &.error {
+            background-color: $rojo;
+        }
+
+        .answer {
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+        }
+    }
+
+    .front,
+    .back {
+        position: absolute;
+        padding: 1rem;
+        backface-visibility: hidden;
+    }
+
+    .btn {
+        color: $celeste !important;
+        font-weight: 500;
+        margin-top: 15px;
+    }
+
+    .flashcard-options {
+        margin-top: .5rem;
+    }
+
+    .flashcard-option {
+        margin-top: .25rem;
+        color: $azul;
+        font-size: .75rem;
+        gap: 15px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:hover {
+            cursor: pointer;
+            font-weight: 500;
+        }
+    }
+
+    .radiobutton {
+        //visibility: hidden;
+        margin-left: 15px;
+    }
+}
+
+.stats {
+    .nav {
+        .nav-item {
+            .nav-link {
+                color: $azul-dark;
+
+                &.active {
+                    background-color: $celeste;
+                }
+            }
+        }
+    }
+
+    .stats-chart {
+        background-color: $azul-dark;
+        border: 1px solid $celeste;
+        border-radius: 8px;
+        padding: 30px;
+        height: 100%;
+        min-height: 258px;
+
+        .chart-info {
+            color: $celeste;
+
+            .tab-pane {
+                .info-col {
+                    padding-right: 0;
+                }
+
+                .piechart {
+                    >div {
+                        position: absolute;
+
+                        >div>div>div {
+                            top: -54px;
+                            left: -100px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
