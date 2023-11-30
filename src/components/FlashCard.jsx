@@ -1,26 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
-export default function FlashCard({ flashcard, flashcards, setFlashcards, catActual, infoResp, setInfoResp }) {
+export default function FlashCard({ flashcard, flashcards, setFlashcards, catActual, infoResp, setInfoResp, height, setCardHeights }) {
   const [flip, setFlip] = useState(flashcard.flip)
   const [btnActive, setBtnActive] = useState(false)
   const [userAnswer, setUserAnswer] = useState(flashcard.userAnswer)
-  const [height, setHeight] = useState('initial')
 
   const frontEl = useRef()
   const backEl = useRef()
   const flipBtn = useRef()
 
-  useEffect(setMaxHeight, [flashcard.question, flashcard.answer, flashcard.options])
+  useEffect(setCardMaxHeight, [flashcard.question, flashcard.answer, flashcard.options])
   useEffect(() => {
-    window.addEventListener('resize', setMaxHeight)
-    return () => window.removeEventListener('resize', setMaxHeight)
+    window.addEventListener('resize', setCardMaxHeight)
+    return () => window.removeEventListener('resize', setCardMaxHeight)
   }, [])
 
-  function setMaxHeight() {
+  function setCardMaxHeight() {
     const frontHeight = frontEl.current.getBoundingClientRect().height
     const backHeight = backEl.current.getBoundingClientRect().height
-    setHeight(Math.max(frontHeight, backHeight, 100))
+    //setHeight(Math.max(frontHeight, backHeight, 100))
+    setCardHeights(currentHeights => [...currentHeights, Math.max(frontHeight, backHeight, 100)])
   }
 
   function updateInfoResp(acierto) {
