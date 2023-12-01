@@ -4,13 +4,13 @@ import StatChart from '../StatChart';
 
 export default function Stats({ infoResp }) {
   const [catInfo, setCatInfo] = useState([])
-  const [stats, setStats] = useState({
+  const stats = {
     cPuntuacion: infoResp.filter(info => info.acierto == true).length,
     cIntentos: infoResp.length,
     rachaActual: mejorRacha(infoResp, 'actual'),
     mejorRacha: mejorRacha(infoResp, 'mejor'),
     peorRacha: mejorRacha(infoResp, 'peor'),
-  })
+  }
   const catList = []
 
   useEffect(updateCatInfo, [])

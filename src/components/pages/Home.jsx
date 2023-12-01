@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import FlashCardList from '../FlashCardList'
 import InitMessage from '../InitMessage'
 
-export default function Home({ flashcards, setFlashcards, categories, setCategories, infoResp, setInfoResp,catActual, setCatActual }) {
+export default function Home({ flashcards, setFlashcards, categories, setCategories, infoResp, setInfoResp, catActual, setCatActual, cardHeights, setCardHeights }) {
   const [unflipedCards, setUnflipedCards] = useState(false)
   const categoryEl = useRef()
   const amountEl = useRef()
@@ -28,6 +28,7 @@ export default function Home({ flashcards, setFlashcards, categories, setCategor
 
   function handleSubmit(e) {
     e.preventDefault()
+    setCardHeights([])
     axios
       .get('https://opentdb.com/api.php', {
         params: {
@@ -57,10 +58,10 @@ export default function Home({ flashcards, setFlashcards, categories, setCategor
     setUnflipedCards(true)
   }
 
-  function areAllFliped () {
+  function areAllFliped() {
     let noFliped = []
     if (flashcards.length > 0) {
-    noFliped = flashcards.filter(flashcard => flashcard.flip == false)
+      noFliped = flashcards.filter(flashcard => flashcard.flip == false)
     }
     if (noFliped.length == 0) {
       setUnflipedCards(false)
@@ -95,7 +96,7 @@ export default function Home({ flashcards, setFlashcards, categories, setCategor
       <div className='body'>
         <div className='container'>
           {
-            flashcards.length > 0 ? <FlashCardList catActual={catActual} flashcards={flashcards} setFlashcards={setFlashcards} infoResp={infoResp} setInfoResp={setInfoResp} /> : <InitMessage />
+            flashcards.length > 0 ? <FlashCardList catActual={catActual} flashcards={flashcards} setFlashcards={setFlashcards} infoResp={infoResp} setInfoResp={setInfoResp} cardHeights={cardHeights} setCardHeights={setCardHeights} /> : <InitMessage />
           }
         </div>
       </div>

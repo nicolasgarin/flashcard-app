@@ -11,12 +11,13 @@ function App() {
   const [flashcards, setFlashcards] = useState([])
   const [categories, setCategories] = useState([])
   const [catActual, setCatActual] = useState('')
+  const [cardHeights, setCardHeights] = useState([])
 
   return (
     <>
-      <Header infoResp={infoResp} setInfoResp={setInfoResp} setFlashcards={setFlashcards} />
+      <Header infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} setCardHeights={setCardHeights} />
       <Routes>
-        <Route path="/" element={<Home infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} categories={categories} setCategories={setCategories} catActual={catActual} setCatActual={setCatActual} />} />
+        <Route path="/" element={<Home infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} categories={categories} setCategories={setCategories} catActual={catActual} setCatActual={setCatActual} cardHeights={cardHeights} setCardHeights={setCardHeights} />} />
         <Route path='/stats' element={<Stats infoResp={infoResp} />} />
       </Routes>
       <Footer />

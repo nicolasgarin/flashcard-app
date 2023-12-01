@@ -10,8 +10,8 @@ export default function PieChart({ aciertos, errores }) {
     ];
 
     const options = {
-        width:400,
-        height:300,
+        width: 400,
+        height: 300,
         is3D: true,
         colors: ['#9AEA9A', '#EA9797'],
         backgroundColor: 'transparent',

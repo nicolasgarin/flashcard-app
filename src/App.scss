@@ -17,6 +17,7 @@
     padding: 40px 0;
 }
 
+//HEADER
 .header {
     min-height: $headerHeight;
     background-color: $azul-dark;
@@ -39,11 +40,13 @@
     }
 }
 
+//SUBHEADER
 .header-sub {
     background-color: $azul;
 
     .btn {
         border: none;
+
         &:hover {
             background-color: $azul-dark !important;
             color: $celeste !important;
@@ -76,6 +79,7 @@
     }
 }
 
+//FOOTER
 footer {
     min-height: $footerHeight;
     background-color: $azul-dark;
@@ -87,6 +91,7 @@ footer {
     }
 }
 
+//BOTONES
 .btn {
     background-color: $celeste-dark !important;
     color: $azul-dark !important;
@@ -152,9 +157,9 @@ footer {
     .front {
         left: 0;
         height: inherit;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .back {

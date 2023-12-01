@@ -19,7 +19,6 @@ export default function FlashCard({ flashcard, flashcards, setFlashcards, catAct
   function setCardMaxHeight() {
     const frontHeight = frontEl.current.getBoundingClientRect().height
     const backHeight = backEl.current.getBoundingClientRect().height
-    //setHeight(Math.max(frontHeight, backHeight, 100))
     setCardHeights(currentHeights => [...currentHeights, Math.max(frontHeight, backHeight, 100)])
   }
 
@@ -41,7 +40,7 @@ export default function FlashCard({ flashcard, flashcards, setFlashcards, catAct
     } else {
       updateInfoResp(false)
     }
-    const update = flashcards.map(existingFlashcards => existingFlashcards.id == flashcard.id? {...existingFlashcards, flip: true, userAnswer: userAnswer} : existingFlashcards)
+    const update = flashcards.map(existingFlashcards => existingFlashcards.id == flashcard.id ? { ...existingFlashcards, flip: true, userAnswer: userAnswer } : existingFlashcards)
     setFlashcards(update)
   }
 

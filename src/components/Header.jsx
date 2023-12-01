@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Header({ infoResp, setInfoResp, setFlashcards }) {
+export default function Header({ infoResp, setInfoResp, flashcards, setFlashcards, setCardHeights }) {
     const [hayStats, setHayStats] = useState(false)
     const navigate = useNavigate()
     useEffect(juegoComenzado, [infoResp])
@@ -9,6 +9,7 @@ export default function Header({ infoResp, setInfoResp, setFlashcards }) {
     function restartGame() {
         setFlashcards([])
         setInfoResp([])
+        setCardHeights([])
         navigate('/')
     }
 
@@ -31,10 +32,10 @@ export default function Header({ infoResp, setInfoResp, setFlashcards }) {
                         <div>Puntuación: {infoResp.filter(info => info.acierto == true).length} / {infoResp.length}</div>
                     </div>
                     <div className='botones d-flex'>
-                        <Link to={'/stats'} style={{pointerEvents: hayStats ? '' : 'none'}}>
-                            <button className='btn btn-celeste'  disabled={!hayStats ? true : false}>Estadísticas</button>
+                        <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
+                            <button className='btn btn-celeste' disabled={!hayStats ? true : false}>Estadísticas</button>
                         </Link>
-                        <button onClick={restartGame} className='btn btn-rojo' disabled={!hayStats ? true : false}>Reiniciar juego</button>
+                        <button onClick={restartGame} className='btn btn-rojo' disabled={flashcards.length == 0 ? true : false}>Reiniciar juego</button>
                     </div>
                 </div>
             </div>

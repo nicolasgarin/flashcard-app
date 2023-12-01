@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import FlashCard from './FlashCard'
 
-export default function FlashCardList({ flashcards, setFlashcards, infoResp, setInfoResp, catActual }) {
-  const [cardHeights, setCardHeights] = useState([])
-  const [height, setHeight] = useState()
+export default function FlashCardList({ flashcards, setFlashcards, infoResp, setInfoResp, catActual, cardHeights, setCardHeights }) {
+  const [height, setHeight] = useState('initial')
 
   useEffect(setMaxHeight, [cardHeights])
 
