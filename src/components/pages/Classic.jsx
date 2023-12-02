@@ -3,9 +3,9 @@ import { useEffect, useRef } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import FlashCardList from '../FlashCardList'
-import InitMessage from '../InitMessage'
+import InitMessage from './InitGame'
 
-export default function Home({ flashcards, setFlashcards, categories, setCategories, infoResp, setInfoResp, catActual, setCatActual, cardHeights, setCardHeights }) {
+export default function Classic({ flashcards, setFlashcards, categories, setCategories, infoResp, setInfoResp, catActual, setCatActual, cardHeights, setCardHeights }) {
   const [unflipedCards, setUnflipedCards] = useState(false)
   const categoryEl = useRef()
   const amountEl = useRef()
@@ -96,7 +96,7 @@ export default function Home({ flashcards, setFlashcards, categories, setCategor
       <div className='body'>
         <div className='container'>
           {
-            flashcards.length > 0 ? <FlashCardList catActual={catActual} flashcards={flashcards} setFlashcards={setFlashcards} infoResp={infoResp} setInfoResp={setInfoResp} cardHeights={cardHeights} setCardHeights={setCardHeights} /> : <InitMessage />
+            flashcards.length > 0 ? <FlashCardList catActual={catActual} flashcards={flashcards} setFlashcards={setFlashcards} infoResp={infoResp} setInfoResp={setInfoResp} cardHeights={cardHeights} setCardHeights={setCardHeights} /> : <div>Para jugar, genera tarjetas</div>
           }
         </div>
       </div>
