@@ -24,29 +24,29 @@
     padding: 0 1.5rem;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
     color: $celeste !important;
-
     .enlace-logo {
         text-decoration: none;
+        margin-right: 30px;
     }
-
     .logo {
         font-size: 30px;
         margin-bottom: 0;
         color: $celeste-dark;
     }
-
     .botones {
         gap: 15px;
+    }
+    .vidas {
+        gap: 5px;
+        margin-left: 5px;
     }
 }
 
 //SUBHEADER
 .header-sub {
     background-color: $azul;
-
     .btn {
         border: none;
-
         &:hover {
             background-color: $azul-dark !important;
             color: $celeste !important;
@@ -188,7 +188,7 @@ footer {
 }
 
 .game-modes {
-    gap: 30px;
+    gap: 60px;
 }
 
 .card {

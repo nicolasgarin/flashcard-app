@@ -35,26 +35,30 @@ export default function InitMessage({ setGameMode }) {
               </Link>
             </div>
             <div className='mode-card'>
-              <button className='btn mode' onClick={() => gameMode('contrareloj')}>
-                <div className='front'>
-                  <div className='mode-icon'> <MdOutlineTimer /></div>
-                  <div className='mode-name'>Contrareloj</div>
-                </div>
-                <div className='back'>
-                  <div className='mode-decript'>Acierta la mayor cantidad posible de preguntas antes que el tiempo llegue a 0</div>
-                </div>
-              </button>
+              <Link to={'/contrareloj'}>
+                <button className='btn mode' onClick={() => gameMode('contrareloj')}>
+                  <div className='front'>
+                    <div className='mode-icon'> <MdOutlineTimer /></div>
+                    <div className='mode-name'>Contrareloj</div>
+                  </div>
+                  <div className='back'>
+                    <div className='mode-decript'>Acierta la mayor cantidad posible de preguntas antes que el tiempo llegue a 0</div>
+                  </div>
+                </button>
+              </Link>
             </div>
             <div className='mode-card'>
-              <button className='btn mode' onClick={() => gameMode('survival')}>
-                <div className='front'>
-                  <div className='mode-icon'> <IoMdHeartHalf /></div>
-                  <div className='mode-name'>Survival</div>
-                </div>
-                <div className='back'>
-                  <div className='mode-decript'>Contesta preguntas hasta que quedes sin vidas</div>
-                </div>
-              </button>
+              <Link to={'/survival'}>
+                <button className='btn mode' onClick={() => gameMode('survival')}>
+                  <div className='front'>
+                    <div className='mode-icon'> <IoMdHeartHalf /></div>
+                    <div className='mode-name'>Survival</div>
+                  </div>
+                  <div className='back'>
+                    <div className='mode-decript'>Contesta preguntas hasta que quedes sin vidas</div>
+                  </div>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
