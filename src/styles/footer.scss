@@ -1,0 +1,10 @@
+//FOOTER
+footer {
+    min-height: $footerHeight;
+    background-color: $azul-2;
+    padding: 30px 0;
+    .texto-footer {
+        color: $celeste;
+        font-weight: 500;
+    }
+}

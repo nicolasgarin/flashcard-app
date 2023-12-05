@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import FlashCardList from '../FlashCardList'
@@ -95,14 +94,13 @@ export default function Classic({ flashcards, setFlashcards, categories, setCate
       <div className='body'>
         <div className='container'>
           {
-            flashcards.length > 0 ? 
-            <FlashCardList catActual={catActual} flashcards={flashcards} setFlashcards={setFlashcards} infoResp={infoResp} setInfoResp={setInfoResp} cardHeights={cardHeights} setCardHeights={setCardHeights} /> 
-            : 
-            <div>
-              <h2>Modo Classic</h2>
-              <p>Para jugar, elije una categoría, elije la cantidad de tarjetas que quieras responder y pulsa el botón generar.</p>
-              <p>Para volver a generar nuevas preguntas con la misma categoría o una diferente, contesta todas las preguntas activas.</p>
-            </div>
+            flashcards.length > 0 ?
+              <FlashCardList catActual={catActual} flashcards={flashcards} setFlashcards={setFlashcards} infoResp={infoResp} setInfoResp={setInfoResp} cardHeights={cardHeights} setCardHeights={setCardHeights} />
+              :
+              <div>
+                <h2>Modo Classic</h2>
+                <p>Para jugar, elije una categoría y la cantidad de preguntas que quieras responder y pulsa el botón generar.</p>
+                <p>Para volver a generar nuevas preguntas con diferente categoría o cantidad de tarjetas, contesta todas las preguntas activas.</p>            </div>
           }
         </div>
       </div>

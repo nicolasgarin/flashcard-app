@@ -25,7 +25,7 @@ function App() {
         <Route path='/' element={<InitGame setGameMode={setGameMode} />} />
         <Route path="/classic" element={<Classic infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} categories={categories} setCategories={setCategories} catActual={catActual} setCatActual={setCatActual} cardHeights={cardHeights} setCardHeights={setCardHeights} />} />
         <Route path="/contrareloj" element={<Contrareloj infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} categories={categories} setCategories={setCategories} catActual={catActual} setCatActual={setCatActual} cardHeights={cardHeights} setCardHeights={setCardHeights} />} />
-        <Route path="/survival" element={<Survival vidas={vidas} setVidas={setVidas} infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} categories={categories} setCategories={setCategories} catActual={catActual} setCatActual={setCatActual} cardHeights={cardHeights} setCardHeights={setCardHeights} />} />
+        <Route path="/survival" element={<Survival gameMode={gameMode} vidas={vidas} setVidas={setVidas} infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} categories={categories} setCategories={setCategories} catActual={catActual} setCatActual={setCatActual} cardHeights={cardHeights} setCardHeights={setCardHeights} />} />
         <Route path='/stats' element={<Stats infoResp={infoResp} />} />
       </Routes>
       <Footer />

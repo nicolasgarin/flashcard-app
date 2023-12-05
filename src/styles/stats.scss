@@ -1,0 +1,38 @@
+//STATS
+.stats {
+    .nav {
+        .nav-item {
+            .nav-link {
+                color: $azul-2;
+                &.active {
+                    background-color: $celeste;
+                }
+            }
+        }
+    }
+    .stats-chart {
+        background-color: $azul-2;
+        border: 1px solid $celeste;
+        border-radius: 8px;
+        padding: 30px;
+        height: 100%;
+        min-height: 258px;
+        .chart-info {
+            color: $celeste;
+            .tab-pane {
+                .info-col {
+                    padding-right: 0;
+                }
+                .piechart {
+                    > div {
+                        position: absolute;
+                        > div > div > div {
+                            top: -54px;
+                            left: -100px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

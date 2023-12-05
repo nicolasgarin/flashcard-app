@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
-export default function FlashCard({ flashcard, flashcards, setFlashcards, catActual, infoResp, setInfoResp, height, setCardHeights }) {
+export default function FlashCard({  gameMode, restaVidas, flashcard, flashcards, setFlashcards, catActual, infoResp, setInfoResp, height, setCardHeights }) {
   const [flip, setFlip] = useState(flashcard.flip)
   const [btnActive, setBtnActive] = useState(false)
   const [userAnswer, setUserAnswer] = useState(flashcard.userAnswer)
@@ -39,6 +39,9 @@ export default function FlashCard({ flashcard, flashcards, setFlashcards, catAct
       updateInfoResp(true)
     } else {
       updateInfoResp(false)
+      if (gameMode == 'survival') {
+        restaVidas()
+      }  
     }
     const update = flashcards.map(existingFlashcards => existingFlashcards.id == flashcard.id ? { ...existingFlashcards, flip: true, userAnswer: userAnswer } : existingFlashcards)
     setFlashcards(update)

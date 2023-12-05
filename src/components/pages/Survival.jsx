@@ -3,8 +3,9 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import FlashCardList from '../FlashCardList';
 
-export default function Survival({ vidas, setVidas, flashcards, setFlashcards, categories, setCategories, infoResp, setInfoResp, catActual, setCatActual, cardHeights, setCardHeights }) {
-  
+export default function Survival({ gameMode, vidas, setVidas, flashcards, setFlashcards, categories, setCategories, infoResp, setInfoResp, catActual, setCatActual, cardHeights, setCardHeights }) {
+  const [unflipedCards, setUnflipedCards] = useState(false)
+
   const categoryEl = useRef()
   const amountEl = useRef()
 
@@ -15,7 +16,8 @@ export default function Survival({ vidas, setVidas, flashcards, setFlashcards, c
         setCategories(res.data.trivia_categories)
       })
   }, [])
-  
+  useEffect(areAllFliped, [infoResp])
+
   function decodeString(str) {
     const textArea = document.createElement('textarea')
     textArea.innerHTML = str
@@ -28,7 +30,7 @@ export default function Survival({ vidas, setVidas, flashcards, setFlashcards, c
     axios
       .get('https://opentdb.com/api.php', {
         params: {
-          amount: amountEl.current.value,
+          amount: 20,
           category: categoryEl.current.value
         }
       })
@@ -52,6 +54,23 @@ export default function Survival({ vidas, setVidas, flashcards, setFlashcards, c
       })
     setCatActual(categoryEl.current.options[categoryEl.current.selectedIndex].text)
     setVidas(amountEl.current.value)
+    setUnflipedCards(true)
+  }
+
+  function areAllFliped() {
+    let noFliped = []
+    if (flashcards.length > 0) {
+      noFliped = flashcards.filter(flashcard => flashcard.flip == false)
+    }
+    if (noFliped.length == 0) {
+      setUnflipedCards(false)
+    } else {
+      setUnflipedCards(true)
+    }
+  }
+
+  function restaVidas() {
+    setVidas(vidas - 1)
   }
 
   return (
@@ -68,36 +87,43 @@ export default function Survival({ vidas, setVidas, flashcards, setFlashcards, c
               </select>
             </div>
             <div className='form-group'>
-              <label className='d-flex align-items-center' htmlFor='amount'>Cantidad de preguntas</label>
+              <label className='d-flex align-items-center' htmlFor='amount'>Nivel de dificultad</label>
               <select className='input tres' id='dificultad' ref={amountEl}>
-                <option value={5} key={'facil'}>Fácil</option>
-                <option value={3} key={'intermedio'}>Intermedio</option>
-                <option value={1} key={'dificil'}>Difícil</option>
+                <option value={10} key={'facil'}>Fácil</option>
+                <option value={5} key={'intermedio'}>Intermedio</option>
+                <option value={3} key={'dificil'}>Difícil</option>
+                <option value={1} key={'dificil'}>Extremo</option>
               </select>
             </div>
             <div className='form-group'>
-              <button className='btn'>Empezar</button>
+              <button className='btn' disabled={vidas > 0 ? true : false}>Empezar</button>
             </div>
-          </form>{console.log(vidas - infoResp.filter(info => info.acierto == false).length)}
+          </form>
         </div>
       </div>
       <div className='body'>
         <div className='container'>
           {
-            flashcards.length > 0 && vidas - infoResp.filter(info => info.acierto == false).length != 0 ? 
-            <FlashCardList catActual={catActual} flashcards={flashcards} setFlashcards={setFlashcards} infoResp={infoResp} setInfoResp={setInfoResp} cardHeights={cardHeights} setCardHeights={setCardHeights} /> 
-            : 
-            vidas - infoResp.filter(info => info.acierto == false).length == 0 ? 
-            <div>
-              <h2>Juego terminado</h2>
-              <p>Lograste contestar correctamente {infoResp.filter(info => info.acierto == true).length} preguntas</p>
-            </div>
-            :
-            <div>
-              <h2>Modo Survival</h2>
-              <p>Para jugar, elije una categoría, elije la cantidad de tarjetas que quieras responder y pulsa el botón generar.</p>
-              <p>Para volver a generar nuevas preguntas con la misma categoría o una diferente, contesta todas las preguntas activas.</p>
-            </div>
+            flashcards.length > 0 && vidas != 0 ?
+              <FlashCardList gameMode={gameMode} restaVidas={restaVidas} catActual={catActual} flashcards={flashcards} setFlashcards={setFlashcards} infoResp={infoResp} setInfoResp={setInfoResp} cardHeights={cardHeights} setCardHeights={setCardHeights} />
+              :
+              vidas == 0 ?
+                <div>
+                  <h2>Juego terminado</h2>
+                  <p>Lograste contestar correctamente {infoResp.filter(info => info.acierto == true).length} preguntas</p>
+                </div>
+                :
+                <div>
+                  <h2>Modo Survival</h2>
+                  <p>Para jugar elije una categoría, elije el nivel de dificultad que deseas y pulsa el botón iniciar.</p>
+                  <p>Nivel fácil: 10 vidas</p>
+                  <p>Nivel intermedio: 5 vidas</p>
+                  <p>Nivel fidícil: 3 vidas</p>
+                  <p>Nivel experto: 1 vida</p>
+                  <p>Iniciarás con 30 preguntas. Deberás responder todas las preguntas que puedas hasta quedar sin vidas, o hasta terminar las preguntas.</p>
+                  <p>Al terminar el juego podrás volver a generar preguntas con una categoría o dificultad diferente.</p>
+                  <p>Suerte!</p>
+                </div>
           }
         </div>
       </div>

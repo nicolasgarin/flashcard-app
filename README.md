@@ -1,8 +1,22 @@
-# React + Vite
+Desarrollado por Nicolás Garín
+Proyecto base inicial: "https://www.youtube.com/watch?v=hEtZ040fsD8"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hooks utilizados:
+- useState
+- useEffect
+- useRef
 
-Currently, two official plugins are available:
+Dependencias aplicadas:
+- React Router - Enrutamiento de páginas internas de la aplicación
+- Axios - Peticiones y llamadas a contenido de enlaces HTTP
+- Sass - Estilos
+- Bootstrap - Diseño de interfaz
+- Uuidv4 - Generador de ids
+- React icons - Iconos
+- React Google charts - Gráficas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Principios
+- Diseño responsive
+- Accesibilidad
+- Uso de variables para estilos
+- Estructura de carpetas escalable

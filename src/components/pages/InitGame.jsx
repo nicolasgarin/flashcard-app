@@ -17,9 +17,8 @@ export default function InitMessage({ setGameMode }) {
       <div className='container'>
         <div className='initMessage'>
           <h2>Juego de preguntas y respuestas</h2>
-          <p>Para jugar, selecciona en el menú superior una categoría y la cantidad de preguntas que quieres, y toca el botón Generar.</p>
-          <p>Mira cada pregunta y sus posibles respuestas, piensa en tu respuesta final y luego cliquea en el boton Flip! para ver la respuesta correcta.</p>
-          <div>Selecciona un modo de juego:</div>
+          <p>Elige entre más de 15 categorías de preguntas para aprender y demostrar tu conocimiento. Analiza tus estadísticas para conocer tus fuertes y debilidades, o simplemente diviértete aprendiendo.</p>
+          <p>Para contestar una pregunta, lee con atención la misma y sus posibles respuestas, piensa en tu respuesta final, seleccionala y luego cliquea en el boton Flip! para ver la respuesta correcta. Ojo! una vez flipeada la tarjeta, no podrás volver a contestarla.</p>          <div>Selecciona un modo de juego:</div>
           <div className='game-modes d-flex justify-content-center'>
             <div className='mode-card'>
               <Link to={'/classic'}>

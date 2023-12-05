@@ -59,7 +59,7 @@ export default function Header({ gameMode, setGameMode, infoResp, setInfoResp, f
                             : gameMode == 'survival' ?
                                 <>
                                     <div className='score'>
-                                        <div className='d-flex'>Puntuación: {infoResp.filter(info => info.acierto == true).length} { vidas - infoResp.filter(info => info.acierto == false).length > 0 ? <span className='vidas d-flex'>| Vidas: {Array.apply(null, { length: vidas - infoResp.filter(info => info.acierto == false).length }).map((e, i) => (<span className="vida" key={i}><FaHeart /></span>))}</span> : ''}</div>
+                                        <div className='d-flex'>Puntuación: {infoResp.filter(info => info.acierto == true).length} { vidas > 0 ? <span className='vidas d-flex'>| Vidas: {Array.apply(null, {length: vidas}).map((e, i) => (<span className="vida" key={i}><FaHeart /></span>))}</span> : ''}</div>
                                     </div>
                                     <div className='botones d-flex'>
                                         <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
