@@ -111,15 +111,16 @@ export default function Survival({ gameMode, vidas, setVidas, flashcards, setFla
                 <div>
                   <h2>Juego terminado</h2>
                   <p>Lograste contestar correctamente {infoResp.filter(info => info.acierto == true).length} preguntas</p>
+                  <p>Inténtalo nuevamente!</p>
                 </div>
                 :
                 <div>
                   <h2>Modo Survival</h2>
                   <p>Para jugar elije una categoría, elije el nivel de dificultad que deseas y pulsa el botón iniciar.</p>
-                  <p>Nivel fácil: 10 vidas</p>
-                  <p>Nivel intermedio: 5 vidas</p>
-                  <p>Nivel fidícil: 3 vidas</p>
-                  <p>Nivel experto: 1 vida</p>
+                  <p>Nivel fácil: 10 vidas<br/>
+                  Nivel intermedio: 5 vidas<br/>
+                  Nivel fidícil: 3 vidas<br/>
+                  Nivel experto: 1 vida</p>
                   <p>Iniciarás con 30 preguntas. Deberás responder todas las preguntas que puedas hasta quedar sin vidas, o hasta terminar las preguntas.</p>
                   <p>Al terminar el juego podrás volver a generar preguntas con una categoría o dificultad diferente.</p>
                   <p>Suerte!</p>

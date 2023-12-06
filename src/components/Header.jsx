@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaHeart } from "react-icons/fa";
 
-export default function Header({ gameMode, setGameMode, infoResp, setInfoResp, flashcards, setFlashcards, setCardHeights, vidas }) {
+export default function Header({ gameMode, setGameMode, infoResp, setInfoResp, flashcards, setFlashcards, setCardHeights, vidas, setVidas, tiempo, setTiempo }) {
     const [hayStats, setHayStats] = useState(false)
     const navigate = useNavigate()
     useEffect(juegoComenzado, [infoResp])
@@ -11,6 +11,8 @@ export default function Header({ gameMode, setGameMode, infoResp, setInfoResp, f
         setFlashcards([])
         setInfoResp([])
         setCardHeights([])
+        setVidas()
+        setTiempo()
         navigate(`/${gameMode}`)
     }
 
@@ -19,6 +21,8 @@ export default function Header({ gameMode, setGameMode, infoResp, setInfoResp, f
         setInfoResp([])
         setCardHeights([])
         setGameMode('')
+        setVidas()
+        setTiempo()
     }
 
     function juegoComenzado() {
@@ -59,7 +63,7 @@ export default function Header({ gameMode, setGameMode, infoResp, setInfoResp, f
                             : gameMode == 'survival' ?
                                 <>
                                     <div className='score'>
-                                        <div className='d-flex'>Puntuación: {infoResp.filter(info => info.acierto == true).length} { vidas > 0 ? <span className='vidas d-flex'>| Vidas: {Array.apply(null, {length: vidas}).map((e, i) => (<span className="vida" key={i}><FaHeart /></span>))}</span> : ''}</div>
+                                        <div className='d-flex'>Puntuación: {infoResp.filter(info => info.acierto == true).length} {vidas > 0 ? <span className='vidas d-flex'>| Vidas: {Array.apply(null, { length: vidas }).map((e, i) => (<span className="vida" key={i}><FaHeart /></span>))}</span> : ''}</div>
                                     </div>
                                     <div className='botones d-flex'>
                                         <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
@@ -67,8 +71,19 @@ export default function Header({ gameMode, setGameMode, infoResp, setInfoResp, f
                                         </Link>
                                     </div>
                                 </>
-                                :
-                                ''
+                                : gameMode == 'contrareloj' ?
+                                    <>
+                                    <div className='score'>
+                                        <div className='d-flex'>Puntuación: {infoResp.filter(info => info.acierto == true).length} {tiempo > 0 ? <span className='vidas d-flex'>| Tiempo: {tiempo}</span> : ''}</div>
+                                    </div>
+                                    <div className='botones d-flex'>
+                                        <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
+                                            <button className='btn btn-celeste' disabled={!hayStats ? true : false}>Estadísticas</button>
+                                        </Link>
+                                    </div>
+                                    </>
+                                    :
+                                    ''
                     }
                 </div>
             </div>

@@ -103,8 +103,7 @@ export default function Stats({ infoResp }) {
               <div>Categoría con mejor efectividad: {efectividad(catInfo, 'efectividad')}</div>
             </div>
             <div className='col-8'>
-              <h3>Por categoría</h3>
-              <StatChart catInfo={catInfo} mejorRacha={mejorRacha} />
+            <StatChart catInfo={catInfo} mejorRacha={mejorRacha} />
             </div>
           </div>
         </div>

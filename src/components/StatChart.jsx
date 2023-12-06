@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import PieChart from './PieChart';
 
 export default function StatChart({ catInfo, mejorRacha }) {
+    const [key, setKey] = useState('home');
+
     return (
+        <Tabs
+        id="statTabs"
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
+        className="mb-3 d-flex justify-content-end"
+      >
+        <Tab eventKey="home" title="Por categoría">
         <Tab.Container id="catStats" defaultActiveKey='0'>
             <Row>
                 <Col sm={4}>
@@ -41,5 +51,11 @@ export default function StatChart({ catInfo, mejorRacha }) {
                 </Col>
             </Row>
         </Tab.Container>
+        </Tab>
+        <Tab eventKey="profile" title="Evolución">
+          Tab content for Profile
+        </Tab>
+      </Tabs>
+
     );
 }
