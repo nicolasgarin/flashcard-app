@@ -70,7 +70,9 @@ export default function Survival({ gameMode, vidas, setVidas, flashcards, setFla
   }
 
   function restaVidas() {
-    setVidas(vidas - 1)
+    setVidas((currentVidas => {
+      return currentVidas - 1
+    }))
   }
 
   return (

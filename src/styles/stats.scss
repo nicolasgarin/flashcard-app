@@ -26,13 +26,25 @@
                 .piechart {
                     > div {
                         position: absolute;
-                        > div > div > div {
-                            top: -54px;
-                            left: -100px;
-                        }
                     }
                 }
             }
+        }
+    }
+    .linechart {
+        background-color: $azul-2;
+        border: 1px solid $celeste;
+        border-radius: 8px;
+        padding: 0 15px;
+        width: 506px;
+        margin-left: auto;
+        >div {
+            height: unset !important;
+
+            >div {
+                height: unset !important;
+            }
+    
         }
     }
 }

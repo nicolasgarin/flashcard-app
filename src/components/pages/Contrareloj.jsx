@@ -113,13 +113,7 @@ export default function Contrareloj({ gameMode, tiempo, setTiempo, flashcards, s
                 :
                 <div>
                   <h2>Modo Contrareloj</h2>
-                  <p>Para jugar elije una categoría, elije el nivel de dificultad que deseas y pulsa el botón iniciar.</p>
-                  <p>Nivel fácil: 10 vidas<br />
-                    Nivel intermedio: 5 vidas<br />
-                    Nivel fidícil: 3 vidas<br />
-                    Nivel experto: 1 vida</p>
-                  <p>Iniciarás con 30 preguntas. Deberás responder todas las preguntas que puedas hasta quedar sin vidas, o hasta terminar las preguntas.</p>
-                  <p>Al terminar el juego podrás volver a generar preguntas con una categoría o dificultad diferente.</p>
+                  <p>En este modo de juego elegirás una cantidad de tiempo límite para contestar  preguntas. Durante ese tiempo intenta contestar correctamente la mayor cantidad de preguntas que puedas para lograr un mayor puntaje</p>
                   <p>Suerte!</p>
                 </div>
           }

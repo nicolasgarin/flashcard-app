@@ -10,8 +10,8 @@ export default function PieChart({ aciertos, errores }) {
     ];
 
     const options = {
-        width: 400,
-        height: 300,
+        width: 200,
+        height: 200,
         is3D: true,
         colors: ['#9AEA9A', '#EA9797'],
         backgroundColor: 'transparent',
@@ -21,6 +21,8 @@ export default function PieChart({ aciertos, errores }) {
                 fontSize: 12
             }, strokeColor: { color: '#B1D4E0' },
         },
+        'chartArea': {'width': '100%', 'height': '100%'},
+
     };
 
     return (
@@ -28,8 +30,8 @@ export default function PieChart({ aciertos, errores }) {
             chartType="PieChart"
             data={data}
             options={options}
-            width={"400px"}
-            height={"400px"}
+            width={"200px"}
+            height={"200px"}
             position={"absolute"}
         />
     );

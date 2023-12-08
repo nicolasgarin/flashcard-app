@@ -1,10 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { FaBrain } from 'react-icons/fa';
 import { MdOutlineTimer } from "react-icons/md";
-import { BsHeartPulseFill, BsPhoneFlip } from 'react-icons/bs';
+import { BsPhoneFlip } from 'react-icons/bs';
 import { IoMdHeartHalf } from "react-icons/io";
-
 
 export default function InitMessage({ setGameMode }) {
 
