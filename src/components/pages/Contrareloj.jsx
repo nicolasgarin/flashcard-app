@@ -87,7 +87,7 @@ export default function Contrareloj({ gameMode, tiempo, setTiempo, flashcards, s
             <div className='form-group'>
               <label className='d-flex align-items-center' htmlFor='amount'>Tiempo</label>
               <select className='input tres' id='dificultad' ref={amountEl}>
-                <option value={90} key={'facil'}>3:00</option>
+                <option value={180} key={'facil'}>3:00</option>
                 <option value={60} key={'intermedio'}>1:00</option>
                 <option value={30} key={'dificil'}>0:30</option>
               </select>

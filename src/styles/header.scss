@@ -21,6 +21,23 @@
         gap: 5px;
         margin-left: 5px;
     }
+    .tiempo {
+        gap: 5px;
+    }
+    .show-counter {
+        //gap: 5px;
+        .countdown {
+            display: flex;
+            align-items: center;
+            p {
+                margin-top: unset;
+                margin-bottom: unset;
+            }
+            &.damger {
+                color: $rojo;
+            }
+        }
+    }
 }
 
 //SUBHEADER

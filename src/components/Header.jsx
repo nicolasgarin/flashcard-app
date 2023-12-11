@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaHeart } from "react-icons/fa";
+import CountdownTimer from './CountDownTimer';
 
 export default function Header(props) {
     const [hayStats, setHayStats] = useState(false)
     const navigate = useNavigate()
+    const THREE_DAYS_IN_MS = props.tiempo * 1000;
+    const NOW_IN_MS = new Date().getTime();
+    const dateTime = NOW_IN_MS + THREE_DAYS_IN_MS;
+
     useEffect(juegoComenzado, [props.infoResp])
 
     function restartGame() {
@@ -73,8 +78,13 @@ export default function Header(props) {
                                 </>
                                 : props.gameMode == 'contrareloj' ?
                                     <>
-                                        <div className='score'>
-                                            <div className='d-flex'>Puntuación: {props.infoResp.filter(info => info.acierto == true).length} {props.tiempo > 0 ? <span className='vidas d-flex'>| Tiempo: {props.tiempo}</span> : ''}</div>
+                                        <div className='score d-flex align-items-center'>
+                                            <div className=''>Puntuación: {props.infoResp.filter(info => info.acierto == true).length}</div>
+                                            {props.tiempo > 0 ?
+                                                <div>
+                                                    <span className='tiempo d-flex align-items-center'>| Tiempo restante: <CountdownTimer targetDate={dateTime} /></span>
+                                                </div>
+                                                : null}
                                         </div>
                                         <div className='botones d-flex'>
                                             <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
