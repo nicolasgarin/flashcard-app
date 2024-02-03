@@ -6,12 +6,14 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
+import { useGame } from '../context/GameContext';
 
 export default function StatChart(props) {
+    const { infoResp } = useGame()
     const [key, setKey] = useState('categoria');
     let parcial = 0;
-    const lineChartData = props.infoResp.map(info => {
-        return [(props.infoResp.indexOf(info) + 1).toString(), info.acierto == true ? parcial += 1 : parcial -= 1]
+    const lineChartData = infoResp.map(info => {
+        return [(infoResp.indexOf(info) + 1).toString(), info.acierto == true ? parcial += 1 : parcial -= 1]
     })
 
     return (

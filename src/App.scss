@@ -3,6 +3,7 @@
 @import "./styles/footer.scss";
 @import "./styles/stats.scss";
 @import "./styles/components.scss";
+@import "./styles/darkMode.scss";
 
 @font-face {
     font-family: "Dangrek";
@@ -18,22 +19,41 @@
     margin: 0;
     min-height: calc(100vh - $footerHeight - $headerHeight);
     padding: 40px 0;
+
+    &.dark {
+        background-color: $azul-2;
+        color: $celeste;
+    }
 }
 
 //INITGAME
 .initMessage {
+
     h2,
     p {
         color: $azul-2 !important;
     }
+
     h2 {
         margin-bottom: 30px;
     }
+
     p {
         font-weight: 500;
     }
+
     .game-modes {
         margin-top: 30px;
         gap: 60px;
+    }
+}
+
+.dark {
+    .initMessage {
+
+        h2,
+        p {
+            color: $celeste !important;
+        }
     }
 }

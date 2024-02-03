@@ -1,0 +1,105 @@
+//HEADER
+.header.dark {
+    background-color: $azul;
+    color: $celeste;
+
+    .logo {
+        color: $celeste;
+    }
+
+    .switch-container {
+        svg {
+            color: $celeste;
+        }
+    }
+}
+
+//FOOTER
+footer.dark {
+    background-color: $azul;
+
+    .texto-footer {
+        color: $azul-2;
+    }
+}
+
+//BODY
+.dark {
+    .btn {
+        background-color: $celeste !important;
+        &:hover {
+            background-color: $azul-2 !important;
+            color: $celeste !important;
+        }
+
+        &.btn-rojo {
+            background-color: $rojo !important;
+    
+            &:hover {
+                background-color: $rojo-dark !important;
+                color: $azul-2 !important;
+            }
+        }
+    }
+
+    .mode-card {
+        .mode-name {
+            color: $azul-2 !important;
+        }
+
+        .mode-icon {
+            color: $azul-2 !important;
+        }
+    }
+
+    .stats {
+        .nav {
+            .nav-item {
+                .nav-link {
+                    color: $celeste;
+                    &.active {
+                        background-color: $celeste;
+                        color: $azul-2;
+                    }
+                }
+            }
+        }
+        .stats-chart {
+            background-color: $azul-2;
+            border: 1px solid $celeste;
+            border-radius: 8px;
+            padding: 30px;
+            height: 100%;
+            min-height: 258px;
+            .chart-info {
+                color: $celeste;
+                .tab-pane {
+                    .info-col {
+                        padding-right: 0;
+                    }
+                    .piechart {
+                        > div {
+                            position: absolute;
+                        }
+                    }
+                }
+            }
+        }
+        .linechart {
+            background-color: $azul-2;
+            border: 1px solid $celeste;
+            border-radius: 8px;
+            padding: 0 15px;
+            width: 506px;
+            margin-left: auto;
+            >div {
+                height: unset !important;
+    
+                >div {
+                    height: unset !important;
+                }
+        
+            }
+        }
+    }
+}

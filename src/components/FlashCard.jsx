@@ -1,20 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import { useGame } from '../context/GameContext';
 
-export default function FlashCard({  gameMode, restaVidas, flashcard, flashcards, setFlashcards, catActual, infoResp, setInfoResp, height, setCardHeights }) {
-  const [flip, setFlip] = useState(flashcard.flip)
+export default function FlashCard({ restaVidas, flashcard, height }) {
   const [btnActive, setBtnActive] = useState(false)
   const [userAnswer, setUserAnswer] = useState(flashcard.userAnswer)
-
   const frontEl = useRef()
   const backEl = useRef()
   const flipBtn = useRef()
+  const { gameMode, flashcards, setFlashcards, catActual, infoResp, setInfoResp, setCardHeights } = useGame()
+  const [flip, setFlip] = useState(flashcard.flip)
+
 
   useEffect(setCardMaxHeight, [flashcard.question, flashcard.answer, flashcard.options])
   useEffect(() => {
     window.addEventListener('resize', setCardMaxHeight)
     return () => window.removeEventListener('resize', setCardMaxHeight)
   }, [])
+  useEffect(updateFlip, [flashcard.flip])
+
+  function updateFlip() {
+    setFlip(flashcard.flip)
+  }
 
   function setCardMaxHeight() {
     const frontHeight = frontEl.current.getBoundingClientRect().height
@@ -41,7 +48,7 @@ export default function FlashCard({  gameMode, restaVidas, flashcard, flashcards
       updateInfoResp(false)
       if (gameMode == 'survival') {
         restaVidas()
-      }  
+      }
     }
     const update = flashcards.map(existingFlashcards => existingFlashcards.id == flashcard.id ? { ...existingFlashcards, flip: true, userAnswer: userAnswer } : existingFlashcards)
     setFlashcards(update)
@@ -57,7 +64,7 @@ export default function FlashCard({  gameMode, restaVidas, flashcard, flashcards
         <div className='flashcard-options'>
           {flashcard.options.map(option => {
             return <div key={option}>
-              <label className='flashcard-option' htmlFor={option}>
+              <label className='flashcard-option d-flex align-items-center' htmlFor={option}>
                 {option}
                 <input
                   className='radiobutton'
@@ -66,7 +73,7 @@ export default function FlashCard({  gameMode, restaVidas, flashcard, flashcards
                   name={`options-${flashcard.id}`}
                   id={uuidv4()}
                   onChange={() => { setBtnActive(true) }}
-                  onClick={() => { setUserAnswer(option) }}
+                  onClick={() => { setUserAnswer(option); setOpActive(true) }}
                 />
               </label>
             </div>

@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-import StatChart from '../StatChart';
+import StatChart from '../components/StatChart';
+import { useGame } from '../context/GameContext';
+import { useUserOptions } from '../context/UserOptionsContext';
 
-export default function Stats({ infoResp }) {
+export default function Stats() {
   const [catInfo, setCatInfo] = useState([])
+  const { infoResp } = useGame()
+  const { theme } =useUserOptions()
+
   const stats = {
     cPuntuacion: infoResp.filter(info => info.acierto == true).length,
     cIntentos: infoResp.length,
@@ -87,7 +92,7 @@ export default function Stats({ infoResp }) {
 
   return (
     <>
-      <div className='body'>
+      <div className={`body ${theme}`}>
         <div className='container'>
           <div className='stats row'>
             <div className='col-4'>
@@ -103,7 +108,7 @@ export default function Stats({ infoResp }) {
               <div>Categoría con mejor efectividad: {efectividad(catInfo, 'efectividad')}</div>
             </div>
             <div className='col-8'>
-            <StatChart infoResp={infoResp} catInfo={catInfo} mejorRacha={mejorRacha} />
+            <StatChart catInfo={catInfo} mejorRacha={mejorRacha} />
             </div>
           </div>
         </div>

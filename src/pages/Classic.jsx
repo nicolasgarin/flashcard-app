@@ -1,21 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import FlashCardList from '../FlashCardList'
+import FlashCardList from '../components/FlashCardList'
+import { useGame } from '../context/GameContext';
+import { useUserOptions } from '../context/UserOptionsContext';
 
-export default function Classic(props) {
+export default function Classic() {
+  const { theme } = useUserOptions()
   const [unflipedCards, setUnflipedCards] = useState(false)
   const categoryEl = useRef()
   const amountEl = useRef()
+  const { setCategories, infoResp, setCardHeights, setFlashcards, setCatActual, flashcards, categories } = useGame()
 
   useEffect(() => {
     axios
       .get('https://opentdb.com/api_category.php')
       .then(res => {
-        props.setCategories(res.data.trivia_categories)
+        setCategories(res.data.trivia_categories)
       })
   }, [])
-  useEffect(areAllFliped, [props.infoResp])
+  useEffect(areAllFliped, [infoResp])
 
 
   function decodeString(str) {
@@ -26,7 +30,7 @@ export default function Classic(props) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    props.setCardHeights([])
+    setCardHeights([])
     axios
       .get('https://opentdb.com/api.php', {
         params: {
@@ -35,7 +39,7 @@ export default function Classic(props) {
         }
       })
       .then(res => {
-        props.setFlashcards(res.data.results.map((questionItem, index) => {
+        setFlashcards(res.data.results.map((questionItem, index) => {
           const answer = decodeString(questionItem.correct_answer)
           const options = [
             ...questionItem.incorrect_answers.map(a => decodeString(a)
@@ -52,14 +56,14 @@ export default function Classic(props) {
           }
         }))
       })
-      props.setCatActual(categoryEl.current.options[categoryEl.current.selectedIndex].text)
+    setCatActual(categoryEl.current.options[categoryEl.current.selectedIndex].text)
     setUnflipedCards(true)
   }
 
   function areAllFliped() {
     let noFliped = []
-    if (props.flashcards.length > 0) {
-      noFliped = props.flashcards.filter(flashcard => flashcard.flip == false)
+    if (flashcards.length > 0) {
+      noFliped = flashcards.filter(flashcard => flashcard.flip == false)
     }
     if (noFliped.length == 0) {
       setUnflipedCards(false)
@@ -70,13 +74,13 @@ export default function Classic(props) {
 
   return (
     <>
-      <div className='header-sub'>
+      <div className={`header-sub ${theme}`}>
         <div className='container d-flex justify-content-end'>
           <form className='d-flex' onSubmit={handleSubmit}>
             <div className='form-group'>
               <label className='d-flex align-items-center' htmlFor='category'>Categoría</label>
               <select className='input uno' id='category' ref={categoryEl}>
-                {props.categories.map(category => {
+                {categories.map(category => {
                   return <option value={category.id} key={category.id}>{category.name}</option>
                 })}
               </select>
@@ -91,11 +95,11 @@ export default function Classic(props) {
           </form>
         </div>
       </div>
-      <div className='body'>
+      <div className={`body ${theme}`}>
         <div className='container'>
           {
-            props.flashcards.length > 0 ?
-              <FlashCardList catActual={props.catActual} flashcards={props.flashcards} setFlashcards={props.setFlashcards} infoResp={props.infoResp} setInfoResp={props.setInfoResp} cardHeights={props.cardHeights} setCardHeights={props.setCardHeights} />
+            flashcards.length > 0 ?
+              <FlashCardList />
               :
               <div>
                 <h2>Modo Classic</h2>

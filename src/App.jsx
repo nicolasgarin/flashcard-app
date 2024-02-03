@@ -1,33 +1,22 @@
 import { useState } from 'react'
 import { Route, Routes } from "react-router"
 import './App.scss'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Classic from './components/pages/Classic'
-import Stats from './components/pages/Stats'
-import InitGame from './components/pages/InitGame'
-import Survival from './components/pages/Survival'
-import Contrareloj from './components/pages/Contrareloj'
+import Header from './layouts/Header'
+import Footer from './layouts/Footer'
+import Classic from './pages/Classic'
+import Stats from './pages/Stats'
+import InitGame from './pages/InitGame'
+import Survival from './pages/Survival'
 
 function App() {
-  const [gameMode, setGameMode] = useState('')
-  const [infoResp, setInfoResp] = useState([])
-  const [flashcards, setFlashcards] = useState([])
-  const [categories, setCategories] = useState([])
-  const [catActual, setCatActual] = useState('')
-  const [cardHeights, setCardHeights] = useState([])
-  const [vidas, setVidas] = useState()
-  const [tiempo, setTiempo] = useState()
-
   return (
     <>
-      <Header gameMode={gameMode} setGameMode={setGameMode} infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} setCardHeights={setCardHeights} vidas={vidas} setVidas={setVidas} tiempo={tiempo} setTiempo={setTiempo} />
+      <Header />
       <Routes>
-        <Route path='/' element={<InitGame setGameMode={setGameMode} />} />
-        <Route path="/classic" element={<Classic infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} categories={categories} setCategories={setCategories} catActual={catActual} setCatActual={setCatActual} cardHeights={cardHeights} setCardHeights={setCardHeights} />} />
-        <Route path="/contrareloj" element={<Contrareloj gameMode={gameMode} tiempo={tiempo} setTiempo={setTiempo} infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} categories={categories} setCategories={setCategories} catActual={catActual} setCatActual={setCatActual} cardHeights={cardHeights} setCardHeights={setCardHeights} />} />
-        <Route path="/survival" element={<Survival gameMode={gameMode} vidas={vidas} setVidas={setVidas} infoResp={infoResp} setInfoResp={setInfoResp} flashcards={flashcards} setFlashcards={setFlashcards} categories={categories} setCategories={setCategories} catActual={catActual} setCatActual={setCatActual} cardHeights={cardHeights} setCardHeights={setCardHeights} />} />
-        <Route path='/stats' element={<Stats infoResp={infoResp} />} />
+        <Route path='/' element={<InitGame />} />
+        <Route path="/classic" element={<Classic />} />
+        <Route path="/survival" element={<Survival />} />
+        <Route path='/stats' element={<Stats />} />
       </Routes>
       <Footer />
     </>

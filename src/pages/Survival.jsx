@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import FlashCardList from '../FlashCardList';
+import FlashCardList from '../components/FlashCardList';
+import { useGame } from '../context/GameContext';
 
-export default function Survival({ gameMode, vidas, setVidas, flashcards, setFlashcards, categories, setCategories, infoResp, setInfoResp, catActual, setCatActual, cardHeights, setCardHeights }) {
+export default function Survival() {
+  const { gameMode, vidas, setVidas, flashcards, setFlashcards, categories, setCategories, infoResp, setCatActual, setCardHeights } = useGame()
   const [unflipedCards, setUnflipedCards] = useState(false)
 
   const categoryEl = useRef()
@@ -94,7 +96,7 @@ export default function Survival({ gameMode, vidas, setVidas, flashcards, setFla
                 <option value={10} key={'facil'}>Fácil</option>
                 <option value={5} key={'intermedio'}>Intermedio</option>
                 <option value={3} key={'dificil'}>Difícil</option>
-                <option value={1} key={'dificil'}>Extremo</option>
+                <option value={1} key={'extremo'}>Extremo</option>
               </select>
             </div>
             <div className='form-group'>
@@ -107,7 +109,7 @@ export default function Survival({ gameMode, vidas, setVidas, flashcards, setFla
         <div className='container'>
           {
             flashcards.length > 0 && vidas != 0 ?
-              <FlashCardList gameMode={gameMode} restaVidas={restaVidas} catActual={catActual} flashcards={flashcards} setFlashcards={setFlashcards} infoResp={infoResp} setInfoResp={setInfoResp} cardHeights={cardHeights} setCardHeights={setCardHeights} />
+              <FlashCardList restaVidas={restaVidas} />
               :
               vidas == 0 ?
                 <div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaHeart } from "react-icons/fa";
 import CountdownTimer from './CountDownTimer';
 
@@ -9,6 +9,7 @@ export default function Header(props) {
     const THREE_DAYS_IN_MS = props.tiempo * 1000;
     const NOW_IN_MS = new Date().getTime();
     const dateTime = NOW_IN_MS + THREE_DAYS_IN_MS;
+    const location = useLocation().pathname;
 
     useEffect(juegoComenzado, [props.infoResp])
 
@@ -59,9 +60,14 @@ export default function Header(props) {
                                     <div>Puntuación: {props.infoResp.filter(info => info.acierto == true).length} / {props.infoResp.length}</div>
                                 </div>
                                 <div className='botones d-flex'>
-                                    <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
-                                        <button className='btn btn-celeste' disabled={!hayStats ? true : false}>Estadísticas</button>
-                                    </Link>
+                                    {location != '/stats' ?
+                                        <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
+                                            <button className='btn btn-celeste' disabled={!hayStats ? true : false}>Estadísticas</button>
+                                        </Link>
+                                        : <Link to={`/${props.gameMode}`} className='enlace-logo'>
+                                            <button className='btn btn-celeste' >Juego</button>
+                                        </Link>
+                                    }
                                     <button onClick={restartGame} className='btn btn-rojo' disabled={props.flashcards.length == 0 ? true : false}>Reiniciar juego</button>
                                 </div>
                             </>
@@ -71,9 +77,14 @@ export default function Header(props) {
                                         <div className='d-flex'>Puntuación: {props.infoResp.filter(info => info.acierto == true).length} {props.vidas > 0 ? <span className='vidas d-flex'>| Vidas: {Array.apply(null, { length: props.vidas }).map((e, i) => (<span className="vida" key={i}><FaHeart /></span>))}</span> : ''}</div>
                                     </div>
                                     <div className='botones d-flex'>
-                                        <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
-                                            <button className='btn btn-celeste' disabled={!hayStats ? true : false}>Estadísticas</button>
-                                        </Link>
+                                        {location != '/stats' ?
+                                            <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
+                                                <button className='btn btn-celeste' disabled={!hayStats ? true : false}>Estadísticas</button>
+                                            </Link>
+                                            : <Link to={`/${props.gameMode}`} className='enlace-logo'>
+                                                <button className='btn btn-celeste' >Juego</button>
+                                            </Link>
+                                        }
                                     </div>
                                 </>
                                 : props.gameMode == 'contrareloj' ?
@@ -87,9 +98,14 @@ export default function Header(props) {
                                                 : null}
                                         </div>
                                         <div className='botones d-flex'>
-                                            <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
-                                                <button className='btn btn-celeste' disabled={!hayStats ? true : false}>Estadísticas</button>
-                                            </Link>
+                                            {location != '/stats' ?
+                                                <Link to={'/stats'} style={{ pointerEvents: hayStats ? '' : 'none' }}>
+                                                    <button className='btn btn-celeste' disabled={!hayStats ? true : false}>Estadísticas</button>
+                                                </Link>
+                                                : <Link to={`/${props.gameMode}`} className='enlace-logo'>
+                                                    <button className='btn btn-celeste' >Juego</button>
+                                                </Link>
+                                            }
                                         </div>
                                     </>
                                     :
