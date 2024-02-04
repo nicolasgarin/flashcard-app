@@ -26,7 +26,7 @@ export default function StatChart(props) {
             <Tab eventKey="categoria" title="Por categoría">
                 <Tab.Container id="catStats" defaultActiveKey='0'>
                     <Row>
-                        <Col sm={4}>
+                        <div className='col-sm-4'>
                             <Nav variant="pills" className="flex-column">
                                 {props.catInfo.map(cat => {
                                     return <Nav.Item>
@@ -34,8 +34,8 @@ export default function StatChart(props) {
                                     </Nav.Item>
                                 })}
                             </Nav>
-                        </Col>
-                        <Col sm={8} className="stats-chart" >
+                        </div>
+                        <div className="col-sm-8 stats-chart" >
                             <Tab.Content className='chart-info'>
                                 {
                                     props.catInfo.map(cat => {
@@ -56,7 +56,7 @@ export default function StatChart(props) {
                                     })
                                 }
                             </Tab.Content>
-                        </Col>
+                        </div>
                     </Row>
                 </Tab.Container>
             </Tab>

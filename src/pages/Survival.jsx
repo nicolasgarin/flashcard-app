@@ -3,10 +3,12 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import FlashCardList from '../components/FlashCardList';
 import { useGame } from '../context/GameContext';
+import { useUserOptions } from '../context/UserOptionsContext';
 
 export default function Survival() {
   const { gameMode, vidas, setVidas, flashcards, setFlashcards, categories, setCategories, infoResp, setCatActual, setCardHeights } = useGame()
   const [unflipedCards, setUnflipedCards] = useState(false)
+  const { theme } = useUserOptions()
 
   const categoryEl = useRef()
   const amountEl = useRef()
@@ -79,7 +81,7 @@ export default function Survival() {
 
   return (
     <>
-      <div className='header-sub'>
+      <div className={`header-sub ${theme}`}>
         <div className='container d-flex justify-content-end'>
           <form className='d-flex' onSubmit={handleSubmit}>
             <div className='form-group'>
@@ -105,7 +107,7 @@ export default function Survival() {
           </form>
         </div>
       </div>
-      <div className='body'>
+      <div className={`body ${theme}`}>
         <div className='container'>
           {
             flashcards.length > 0 && vidas != 0 ?

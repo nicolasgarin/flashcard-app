@@ -19,7 +19,7 @@ footer.dark {
     background-color: $azul;
 
     .texto-footer {
-        color: $azul-2;
+        color: $celeste;
     }
 }
 
@@ -38,6 +38,12 @@ footer.dark {
             &:hover {
                 background-color: $rojo-dark !important;
                 color: $azul-2 !important;
+            }
+        }
+        &.btn-card {
+            background-color: $azul !important;
+            &:hover {
+                background-color: $azul-2 !important;
             }
         }
     }

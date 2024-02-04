@@ -80,7 +80,7 @@ export default function FlashCard({ restaVidas, flashcard, height }) {
           })}
         </div>
         <div className='d-flex justify-content-end'>
-          <button onClick={handleFlip} ref={flipBtn} disabled={btnActive ? '' : true} className='btn'>Flip!</button>
+          <button onClick={handleFlip} ref={flipBtn} disabled={btnActive ? '' : true} className='btn btn-card'>Flip!</button>
         </div>
       </div>
       <div className={`back d-flex flex-column ${userAnswer == flashcard.answer ? 'correct' : userAnswer == '' ? '' : 'error'}`} ref={backEl}>
